@@ -1,0 +1,15 @@
+models:
+  - name: stg_clientes
+    columns:
+      - name: cod_cliente
+        data_tests:
+        - unique
+        - not_null
+      - name: tipo_cliente
+        data_tests:
+          - accepted_values:
+              values: ['PF', 'PJ']
+      - name: data_inclusao
+        data_tests:
+          - not_null
+
