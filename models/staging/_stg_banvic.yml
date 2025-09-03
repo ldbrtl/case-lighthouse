@@ -44,4 +44,16 @@ models:
           - unique
           - not_null
         
-      
+  - name: stg_contas
+    columns:
+      - name: num_conta
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_cliente
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_agencia
+        data_tests:
+          - not_null
