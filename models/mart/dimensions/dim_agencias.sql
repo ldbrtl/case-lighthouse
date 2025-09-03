@@ -1,5 +1,6 @@
 with src as (
     select
+    
     cod_agencia,
     nome,
     tipo_agencia,
