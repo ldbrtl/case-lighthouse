@@ -74,3 +74,16 @@ models:
         data_tests:
           - accepted_values:
               values: ['Enviada','Em análise','Validação documentos','Aprovada']
+
+  - name: stg_transacoes
+    columns:
+      - name: cod_transacao
+        data_tests:
+          - unique
+          - not_null      
+      - name: num_conta
+        data_tests:
+          - not_null
+      - name: data_transacao
+        data_tests:
+          - not_null
