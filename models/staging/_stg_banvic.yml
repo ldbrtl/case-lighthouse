@@ -36,4 +36,12 @@ models:
       - name: cod_agencia
         data_tests:
           - not_null
+
+  - name: stg_colaboradores
+    columns:
+      - name: cod_colaborador
+        data_tests:
+          - unique
+          - not_null
+        
       
