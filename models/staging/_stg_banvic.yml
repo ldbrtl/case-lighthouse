@@ -57,3 +57,20 @@ models:
       - name: cod_agencia
         data_tests:
           - not_null
+
+  - name: stg_propostas_credito
+    columns:
+      - name: cod_proposta
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_cliente
+        data_tests:
+          - not_null
+      - name: data_entrada_proposta
+        data_tests:
+          - not_null
+      - name: status_proposta
+        data_tests:
+          - accepted_values:
+              values: ['Enviada','Em análise','Validação documentos','Aprovada']
