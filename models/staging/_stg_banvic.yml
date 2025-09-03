@@ -37,6 +37,7 @@ models:
         data_tests:
           - not_null
 
+
   - name: stg_colaboradores
     columns:
       - name: cod_colaborador
@@ -57,6 +58,7 @@ models:
       - name: cod_agencia
         data_tests:
           - not_null
+
 
   - name: stg_propostas_credito
     columns:
