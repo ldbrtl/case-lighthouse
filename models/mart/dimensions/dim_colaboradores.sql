@@ -10,7 +10,7 @@ with src as (
         cep
              
                 
-    from {{ ref('stg_colaboradores') }} AS co
+    from {{ ref('stg_colaboradores') }}
 
 )
 
