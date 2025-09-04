@@ -1,6 +1,6 @@
-with src as (
+WITH src AS (
 
-    select
+    SELECT
         cod_colaborador,
         primeiro_nome,
         ultimo_nome,
@@ -11,8 +11,8 @@ with src as (
         cep
              
                 
-    from {{ ref('stg_colaboradores') }}
+    FROM {{ ref('stg_colaboradores') }}
 
 )
 
-select * from src
+SELECT * FROM src

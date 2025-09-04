@@ -1,5 +1,5 @@
-with src as (
-    select
+WITH src AS (
+    SELECT
     
     cod_cliente,
     primeiro_nome,
@@ -12,9 +12,9 @@ with src as (
     endereco,
     cep
 
-    from {{ ref('stg_clientes') }}
+    FROM {{ ref('stg_clientes') }}
 
 )
 
-select * from src
+SELECT * FROM src
 
