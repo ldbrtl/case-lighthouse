@@ -1,18 +1,18 @@
-with src as (
+WITH src AS (
 
-    select
+    SELECT
         cod_colaborador,
         primeiro_nome,
         ultimo_nome,
         email,
-        regexp_replace(cpf, r'[^0-9]', '') as cpf,
+        regexp_replace(cpf, r'[^0-9]', '') AS cpf,
         data_nascimento,
         endereco,
-        regexp_replace(cep, r'[^0-9]', '') as cep     
+        regexp_replace(cep, r'[^0-9]', '') AS cep     
                 
-    from {{ source('raw', 'colaboradores') }}
+    FROM {{ source('raw', 'colaboradores') }}
 
 )
 
 
-select * from src
+SELECT * FROM src

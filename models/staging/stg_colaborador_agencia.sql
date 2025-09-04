@@ -1,12 +1,12 @@
-with src as (
+WITH src AS (
 
-    select
+    SELECT
         cod_colaborador,
         cod_agencia        
 
-    from {{ source('raw', 'colaborador_agencia') }}
+    FROM {{ source('raw', 'colaborador_agencia') }}
 
 )
 
 
-select * from src
+SELECT * FROM src

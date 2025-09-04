@@ -1,20 +1,20 @@
-with src as (
+WITH src AS (
 
-    select
+    SELECT
         cod_cliente,
         primeiro_nome,
         ultimo_nome,
         email,
         tipo_cliente,
         data_inclusao,
-        regexp_replace(cpfcnpj, r'[^0-9]', '') as cpf_cnpj,
+        regexp_replace(cpfcnpj, r'[^0-9]', '') AS cpf_cnpj,
         data_nascimento,
         endereco,
-        regexp_replace(cep,     r'[^0-9]', '') as cep
+        regexp_replace(cep,     r'[^0-9]', '') AS cep
 
-    from {{ source('raw', 'clientes') }}
+    FROM {{ source('raw', 'clientes') }}
 
 )
 
 
-select * from src
+SELECT * FROM src
