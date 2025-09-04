@@ -1,15 +1,15 @@
-with src as (
+WITH src AS (
 
-    select
+    SELECT
         cod_transacao,
         num_conta,
         data_transacao,
         nome_transacao,
-        cast(valor_transacao as numeric) as valor_transacao          
+        cast(valor_transacao AS numeric) AS valor_transacao          
                 
-    from {{ source('raw', 'transacoes') }}
+    FROM {{ source('raw', 'transacoes') }}
 
 )
 
 
-select * from src
+SELECT * FROM src
