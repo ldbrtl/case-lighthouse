@@ -1,0 +1,91 @@
+models:
+  - name: stg_clientes
+    columns:
+      - name: cod_cliente
+        data_tests:
+        - unique
+        - not_null
+      - name: tipo_cliente
+        data_tests:
+          - accepted_values:
+              values: ['PF', 'PJ']
+      - name: data_inclusao
+        data_tests:
+          - not_null
+
+  - name: stg_agencias
+    columns:
+      - name: cod_agencia 
+        data_tests:
+          - unique
+          - not_null
+      - name: tipo_agencia
+        data_tests:
+          - accepted_values:
+              values: ['Digital', 'Física']
+      - name: uf
+        data_tests:
+          - accepted_values:
+              values: ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
+  
+  - name: stg_colaborador_agencia
+    columns:
+      - name: cod_colaborador
+        data_tests:
+          - not_null
+      - name: cod_agencia
+        data_tests:
+          - not_null
+
+
+  - name: stg_colaboradores
+    columns:
+      - name: cod_colaborador
+        data_tests:
+          - unique
+          - not_null
+        
+  - name: stg_contas
+    columns:
+      - name: num_conta
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_cliente
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_agencia
+        data_tests:
+          - not_null
+
+
+  - name: stg_propostas_credito
+    columns:
+      - name: cod_proposta
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_cliente
+        data_tests:
+          - not_null
+      - name: data_entrada_proposta
+        data_tests:
+          - not_null
+      - name: status_proposta
+        data_tests:
+          - accepted_values:
+              values: ['Enviada','Em análise','Validação documentos','Aprovada']
+
+  - name: stg_transacoes
+    columns:
+      - name: cod_transacao
+        data_tests:
+          - unique
+          - not_null      
+      - name: num_conta
+        data_tests:
+          - not_null
+      - name: data_transacao
+        data_tests:
+          - not_null

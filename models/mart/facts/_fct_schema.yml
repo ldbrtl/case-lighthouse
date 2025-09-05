@@ -1,0 +1,32 @@
+models:
+  - name: fct_propostas_credito
+    description: "Fato de propostas e credito"
+    columns:
+      - name: cod_proposta
+        data_tests:
+          - unique
+          - not_null
+      - name: cod_agencia_colaborador
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_agencias')
+              field: cod_agencia
+      - name: cod_cliente
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_clientes')
+                field: cod_cliente
+              config:
+                severity: warn
+
+  - name: fct_transacoes
+    description: "Fato das transacoes"
+    columns:
+      - name: cod_cliente
+        data_tests:
+          - not_null
+      - name: cod_agencia
+        data_tests:
+          - not_null 
