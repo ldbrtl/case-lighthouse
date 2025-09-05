@@ -1,15 +1,18 @@
-Welcome to your new dbt project!
 
-### Using the starter project
+### Análise de dados do BanVic
 
-Try running the following commands:
-- dbt run
-- dbt test
+O projeto está dividido nas seguintes principais:
 
+1 - Extração, Carga e Transformação (ELT) dos Dados
+2 - Limpeza e Normalização dos Dados
+3 - Modelagem dos dados
+4 - Criação de SQL scripts para visualizações
+5 - Desenvolvimento de Dashboards
+6 - Desenvolvimento de um relatório
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+### Ferramentas utilizadas:
+
+BigQuery: carregamento inicial e armazenamento dos dados
+dbt: transformação e modelagem dos dados
+PowerBI: construção de dashboard para visualização de insights.
+
