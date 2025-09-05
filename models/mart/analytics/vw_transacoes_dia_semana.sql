@@ -1,42 +1,50 @@
 WITH
 
+
 transacoes AS (
   SELECT
-        cod_transacao,
-        cod_agencia,
-        CAST(data_transacao AS DATE) as dt,
-        valor_transacao,
-        nome_transacao
+    CAST(data_transacao AS DATE) AS dt,
+    ABS(valor_transacao)         AS valor_transacao
   FROM {{ ref('fct_transacoes') }}
+),
+
+
+base AS (
+  SELECT
+    d.day_of_week,
+    d.day_of_week_name,
+    t.dt AS date_day,
+    t.valor_transacao
+  FROM transacoes t
+  JOIN {{ ref('dim_dates') }} d
+    ON t.dt = d.date_day
 ),
 
 
 por_dia AS (
   SELECT
-    d.day_of_week          AS day_of_week,
-    d.day_of_week_name     AS day_of_week_name,
-    t.dt      AS date_day,
-    count(*)               AS qtd_transacoes_dia,
-    SUM(ABS(t.valor_transacao))      AS valor_total_dia
-  FROM transacoes t
-  JOIN {{ ref('dim_dates') }} d
-    ON t.dt = d.date_day
-  GROUP BY
-    day_of_week, day_of_week_name, date_day
+    day_of_week,
+    day_of_week_name,
+    date_day,
+    COUNT(*)                 AS qtd_transacoes_dia,
+    SUM(valor_transacao)     AS valor_total_dia
+  FROM base
+  GROUP BY 1,2,3
 ),
 
 
-analysis AS (
+medias AS (
   SELECT
     day_of_week,
     day_of_week_name,
-    AVG(qtd_transacoes_dia)  AS media_qtd_transacoes,
-    AVG(valor_total_dia)     AS media_valor_movimentado
+    AVG(qtd_transacoes_dia) AS media_qtd_transacoes,
+    AVG(valor_total_dia)    AS media_valor_movimentado
   FROM por_dia
-  GROUP BY day_of_week, day_of_week_name
+  GROUP BY 1,2
 )
+
 
 SELECT
   *
-FROM analysis
+FROM medias
 ORDER BY day_of_week

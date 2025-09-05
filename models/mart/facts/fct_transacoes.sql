@@ -8,10 +8,12 @@ with src as (
     c.tipo_conta,
     c.cod_cliente,
     c.cod_agencia,
-
+    c.tipo_agencia,
+    c.nome
+ 
     from {{ ref('stg_transacoes')}} as t
     left join 
-        {{ ref('stg_contas')}} as c
+        {{ ref('dim_contas')}} as c
         on 
         t.num_conta = c.num_conta
 

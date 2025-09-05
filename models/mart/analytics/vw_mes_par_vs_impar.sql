@@ -35,7 +35,7 @@ resumo AS (
 
 source_data AS (
   SELECT
-    CASE WHEN mes_par THEN 'par' ELSE 'impar' END AS grupo_mes,
+    CASE WHEN mes_par THEN 'Pares' ELSE 'Ímpares' END AS grupo_mes,
     media_qtd_transacoes_mes,
     media_valor_total_mes,
     media_ticket_medio_mes,

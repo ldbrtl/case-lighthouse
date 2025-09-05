@@ -5,7 +5,7 @@ transacoes as (
         cod_transacao,
         cod_agencia,
         CAST(data_transacao AS DATE) as dt,
-        valor_transacao,
+        ABS(valor_transacao) AS valor_transacao,
         nome_transacao
     from 
         {{ ref('fct_transacoes') }}
