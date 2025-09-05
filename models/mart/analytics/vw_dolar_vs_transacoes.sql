@@ -1,9 +1,9 @@
 WITH transacoes AS (
   SELECT
-    DATE(data_transacao)                       AS data_transacao,         
-    ABS(valor_transacao)                       AS valor_abs,
+    DATE(data_transacao) AS data_transacao,         
+    ABS(valor_transacao) AS valor_abs,
     cod_transacao
-  FROM `case-lighthouse.dbt_ldebortoli_analytics.fct_transacoes`
+  FROM {{ ref('fct_transacoes') }}
 
 ),
 dolar AS (
@@ -12,9 +12,9 @@ dolar AS (
 )
 SELECT
   d.cotacao_dolar,
-  COUNT(*)                         AS qtd_transacoes,
-  SUM(t.valor_abs)                 AS total_transacoes,
-  AVG(t.valor_abs)                 AS valor_medio_transacao
+  COUNT(*) AS qtd_transacoes,
+  SUM(t.valor_abs) AS total_transacoes,
+  AVG(t.valor_abs) AS valor_medio_transacao
 FROM transacoes t
 JOIN dolar d
   ON t.data_transacao = d.date_day        
